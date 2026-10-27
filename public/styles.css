@@ -1,0 +1,68 @@
+/* VoxTheBoxTheCallingPilot theme: black + red #E10600 + gray #BABABA,
+   faint gold-tinted dollar signs + faint gold-outlined headsets, red
+   glow deeper at top/bottom and softer in the middle. */
+:root { --red: #E10600; --black: #0B0B0B; --gray: #BABABA; --gold: #D9C69C; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--black); color: #fff;
+  font-family: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-image:
+    radial-gradient(ellipse 90% 40% at 50% -10%, rgba(225,6,0,.35), transparent 70%),
+    radial-gradient(ellipse 90% 40% at 50% 110%, rgba(225,6,0,.35), transparent 70%);
+  background-attachment: fixed;
+}
+body::before {
+  content: "$  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $  $";
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  font-size: 120px; line-height: 1.4; color: rgba(217,198,156,.06);
+  white-space: pre-wrap; word-break: break-all;
+}
+header, main, footer { position: relative; z-index: 1; }
+.wordmark { font-family: "Montserrat", system-ui, sans-serif; font-weight: 800; letter-spacing: .01em; }
+.wordmark .r { color: var(--red); }
+.wordmark .g { color: var(--gray); }
+header { padding: 18px 20px 10px; border-bottom: 2px solid var(--red); }
+header .tag { color: var(--gray); font-size: 14px; }
+header .motto { color: var(--gold); font-size: 13px; margin-top: 4px; }
+nav { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 20px; }
+nav button {
+  background: #1a1a1a; color: #fff; border: 1px solid #333; border-radius: 8px;
+  padding: 7px 11px; cursor: pointer; font-size: 13px;
+}
+nav button.active { background: var(--red); border-color: var(--red); }
+main { max-width: 980px; margin: 0 auto; padding: 10px 20px 40px; }
+section.page { display: none; }
+section.page.active { display: block; }
+h1, h2, h3 { color: #fff; }
+h2 { border-left: 4px solid var(--red); padding-left: 10px; }
+p, li { color: #e8e8e8; line-height: 1.5; }
+a { color: var(--gold); }
+.card { background: #161616; border: 1px solid #333; border-radius: 12px; padding: 16px; margin: 12px 0; }
+.price { font-size: 28px; font-weight: 800; color: #fff; }
+.price span { color: var(--red); }
+label { display: block; margin: 8px 0 4px; color: var(--gray); font-size: 13px; }
+input, select, textarea {
+  width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #444;
+  background: #0f0f0f; color: #fff; font-size: 15px;
+}
+button.cta {
+  background: var(--red); color: #fff; border: 0; border-radius: 10px;
+  padding: 12px 18px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 12px;
+}
+button.secondary { background: #222; color: #fff; border: 1px solid #555; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid #333; font-size: 14px; }
+.badge { display: inline-block; background: var(--red); color: #fff; border-radius: 20px; padding: 2px 10px; font-size: 12px; }
+.gold { color: var(--gold); }
+.muted { color: var(--gray); font-size: 13px; }
+.notice { background: #2a120e; border: 1px solid var(--red); border-radius: 10px; padding: 12px; margin: 12px 0; }
+.demo-note { background: #1c1c10; border: 1px solid var(--gold); border-radius: 10px; padding: 12px; margin: 12px 0; }
+#call-popup {
+  display: none; position: fixed; right: 16px; bottom: 16px; z-index: 5;
+  background: #161616; border: 2px solid var(--red); border-radius: 12px; padding: 16px; width: 300px;
+}
+#call-popup .timer { font-size: 22px; font-weight: 800; }
+footer { padding: 20px; border-top: 1px solid #333; color: var(--gray); font-size: 13px; text-align: center; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { border: 1px solid #555; border-radius: 20px; padding: 6px 12px; cursor: pointer; font-size: 13px; }
+.pill.active { background: var(--red); border-color: var(--red); }

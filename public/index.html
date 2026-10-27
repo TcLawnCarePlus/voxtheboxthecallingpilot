@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VoxTheBoxTheCallingPilot — Smarter conversations. Greater results.</title>
+<link rel="stylesheet" href="/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="wordmark" style="font-size:30px"><span class="r">Vox</span><span class="g">The</span><span class="r">Box</span><span class="g">Calling</span><span class="r">Pilot</span></div>
+  <div class="tag">Smarter conversations. Greater results.</div>
+  <div class="motto">Every call, cleared for takeoff. / If you never miss a call, you never miss a customer.</div>
+  <div style="margin-top:10px"><span class="badge">DEMO BUILD</span> <span class="muted">Sample data only — no live calls, no live payments.</span></div>
+</header>
+
+<nav id="nav">
+  <button data-page="website" class="active">Website</button>
+  <button data-page="dashboard">Dashboard</button>
+  <button data-page="dialer">Live Dialer</button>
+  <button data-page="leads">My Leads</button>
+  <button data-page="leadpool">Lead Pool</button>
+  <button data-page="billing">Seats &amp; Billing</button>
+  <button data-page="calls">Live Calls</button>
+  <button data-page="agents">Agents</button>
+  <button data-page="supervisor">Supervisor</button>
+  <button data-page="inbox">Inbox</button>
+  <button data-page="ivr">IVR &amp; Queues</button>
+  <button data-page="crm">CRM Integrations</button>
+  <button data-page="workforce">Workforce</button>
+  <button data-page="analytics">Analytics</button>
+  <button data-page="scripts">Scripts</button>
+  <button data-page="interactions">Interactions</button>
+  <button data-page="recordings">Recordings &amp; Quality</button>
+  <button data-page="campaigns">Campaigns</button>
+  <button data-page="genai">GenAI Studio</button>
+  <button data-page="genius">Genius Routing</button>
+  <button data-page="voice">Vox AI Voice Demo</button>
+  <button data-page="owner">Owner Console</button>
+</nav>
+
+<main>
+  <!-- WEBSITE -->
+  <section class="page active" id="page-website">
+    <h1>Smarter conversations. Greater results.</h1>
+    <p>AI contact-center software for businesses that never want to miss a customer. Calling is included in the subscription.</p>
+    <div class="card">
+      <h2>CALLING IS INCLUDED — WHAT'S COVERED</h2>
+      <ul>
+        <li>Calling is included in your subscription — no separate minutes bill from us.</li>
+        <li>You don't need a Twilio account — Vox provides calling through its platform carrier.</li>
+        <li>Customers bring no telephony account; the platform carries the calling.</li>
+        <li>One subscription covers the platform, the dialer, and the calling it includes.</li>
+        <li>Agent seats scale with your team — add or remove seats and the monthly amount updates live.</li>
+        <li>Lead Pool purchases are held for owner review before delivery — no scrub, no delivery.</li>
+        <li>Agents log in from any computer — call center or home.</li>
+      </ul>
+      <h3>WHY BUNDLED CALLING IS BETTER</h3>
+      <p>No second account to open, no second bill to watch, no number to buy yourself. You subscribe, your team logs in, and calling is part of the service.</p>
+    </div>
+    <div class="card">
+      <h2>Pricing</h2>
+      <p class="price"><span>$99</span>/month base + <span>$112</span>/agent/month</p>
+      <p>Example: 5 agents = <strong>$659/mo</strong>.</p>
+      <p>Yearly: <strong>$990</strong>/year base (two months free) + <strong>$1,025</strong>/agent/year. Example: 5 agents = <strong>$6,115</strong>/year.</p>
+      <p class="muted">Proration: $99/mo + $112/agent/mo, and $112 ÷ days in month × days active (halfway = $56, three-quarters = $84, then $0).</p>
+      <button class="cta" onclick="showPage('billing')">See Seats &amp; Billing</button>
+    </div>
+    <div class="card">
+      <h2>Sign up / Log in</h2>
+      <p class="muted">Demo accounts are local to this build. No live payment is taken here.</p>
+      <label>Business name <input id="su-business" placeholder="Your business"></label>
+      <label>Email <input id="su-email" placeholder="you@example.com"></label>
+      <label>Password (10+ characters) <input id="su-password" type="password"></label>
+      <button class="cta" onclick="signup()">Create account</button>
+      <button class="secondary" onclick="login()">Log in</button>
+      <button class="secondary" onclick="logout()">Log out</button>
+      <p id="auth-msg" class="muted"></p>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="page" id="page-dashboard">
+    <h2>Dashboard</h2>
+    <div class="demo-note">Sample data only. Log in to see your own agents, leads, and orders.</div>
+    <div class="card"><h3>Today (sample)</h3><p>Calls handled: 42 · Answered: 38 · Missed: 4 · Talk time: 3h 12m</p><p id="dash-me" class="muted"></p></div>
+    <div class="card"><h3>Quick actions</h3>
+      <button class="secondary" onclick="showPage('dialer')">Open Live Dialer</button>
+      <button class="secondary" onclick="showPage('leadpool')">Browse Lead Pool</button>
+      <button class="secondary" onclick="showPage('agents')">Manage Agents</button>
+    </div>
+  </section>
+
+  <!-- LIVE DIALER -->
+  <section class="page" id="page-dialer">
+    <h2>Live Dialer — 4 modes</h2>
+    <div class="pill-row" id="dialer-modes">
+      <span class="pill active" data-mode="Power">Power</span>
+      <span class="pill" data-mode="Predictive">Predictive</span>
+      <span class="pill" data-mode="Preview">Preview</span>
+      <span class="pill" data-mode="Manual">Manual</span>
+    </div>
+    <div class="card"><h3 id="dialer-mode-title">Power dialing (sample)</h3>
+      <p>Next lead: Sample Lead — sample contact, sample business. Leads from any source work in the dialer.</p>
+      <button class="cta" onclick="demoCall()">Start sample call</button>
+      <button class="secondary" onclick="showCallPopup()">Show incoming-call pop-up</button>
+      <p id="dialer-msg" class="muted"></p>
+    </div>
+  </section>
+
+  <!-- MY LEADS -->
+  <section class="page" id="page-leads">
+    <h2>My Leads + Free Import</h2>
+    <p>customers can buy leads anywhere including from us but wherever they buy them those leads will work in the dialer.</p>
+    <div class="card"><h3>Import My Own Leads (free)</h3>
+      <label>Name <input id="lead-name" placeholder="Lead name"></label>
+      <label>Phone <input id="lead-phone" placeholder="Phone (optional)"></label>
+      <label>Email <input id="lead-email" placeholder="Email (optional)"></label>
+      <button class="cta" onclick="addLead()">Add lead</button>
+      <p id="lead-msg" class="muted"></p>
+    </div>
+    <div class="card"><h3>Your leads</h3><button class="secondary" onclick="loadLeads()">Refresh</button><div id="leads-list"></div></div>
+  </section>
+
+  <!-- LEAD POOL -->
+  <section class="page" id="page-leadpool">
+    <h2>Lead Pool</h2>
+    <p>Click a category — every price below reprices instantly. Orders wait for owner review before delivery.</p>
+    <div class="pill-row" id="lp-cats"></div>
+    <div class="card">
+      <label>Size
+        <select id="lp-size">
+          <option value="1000">1,000</option><option value="2500">2,500</option>
+          <option value="5000">5,000</option><option value="10000">10,000</option>
+          <option value="20000">20,000</option><option value="40000">40,000</option>
+          <option value="60000">60,000</option><option value="100000">100,000</option>
+        </select>
+      </label>
+      <p class="price">Selected: <span id="lp-price">—</span></p>
+      <table id="lp-table"><thead><tr><th>Size</th><th>Price</th></tr></thead><tbody></tbody></table>
+      <button class="cta" onclick="buyLeadPool()">Buy this Lead Pool (test checkout)</button>
+      <p id="lp-msg" class="muted"></p>
+    </div>
+    <div class="card"><h3>Owner hold</h3><p>Every Lead Pool order lands in <strong>pending_owner</strong> ("awaiting owner review"). The owner releases it; only then does fulfillment begin (provider pull, dedupe, DNC scrub). No scrub, no delivery.</p></div>
+  </section>
+
+  <!-- SEATS & BILLING -->
+  <section class="page" id="page-billing">
+    <h2>Seats &amp; Billing</h2>
+    <div class="card">
+      <label>Billing period
+        <select id="bill-period"><option value="monthly">Monthly</option><option value="yearly">Yearly</option></select>
+      </label>
+      <label>Agents <input id="bill-agents" type="number" min="1" max="500" value="5"></label>
+      <p class="price">Total: <span id="bill-total">—</span></p>
+      <p class="muted">Created active logins are the billing record. Deactivate a seat and it stops counting, with prorated math: $112 ÷ days in month × days active.</p>
+      <button class="cta" onclick="calcBilling()">Calculate</button>
+      <button class="secondary" onclick="checkoutSub()">Start test checkout</button>
+      <p id="bill-msg" class="muted"></p>
+    </div>
+    <div class="card"><h3>Proration examples</h3>
+      <p>Halfway through a 30-day month: $112 × 15 ÷ 30 = <strong>$56</strong>. Three-quarters: <strong>$84</strong>.</p>
+      <label>Days active <input id="pro-days" type="number" value="15"></label>
+      <label>Days in month <input id="pro-month" type="number" value="30"></label>
+      <button class="secondary" onclick="calcProration()">Calculate proration</button>
+      <p id="pro-msg"></p>
+    </div>
+    <div class="card"><h3>Your orders</h3><button class="secondary" onclick="loadOrders()">Refresh</button><div id="orders-list"></div></div>
+  </section>
+
+  <!-- LIVE CALLS -->
+  <section class="page" id="page-calls">
+    <h2>Live Calls</h2>
+    <div class="demo-note">Sample data only — no live calls are placed from this build.</div>
+    <div class="card"><button class="secondary" onclick="loadCalls()">Refresh sample calls</button><div id="calls-list"></div></div>
+  </section>
+
+  <!-- AGENTS -->
+  <section class="page" id="page-agents">
+    <h2>Agents</h2>
+    <p>Owner creates agent logins at purchase — one by one or in bulk. Work time is tracking/reporting only, never hourly billing.</p>
+    <div class="card"><h3>Add agents</h3>
+      <label>Name <input id="agent-name" placeholder="Agent name"></label>
+      <label>Email <input id="agent-email" placeholder="Agent email"></label>
+      <button class="cta" onclick="addAgent()">Add agent</button>
+      <p id="agent-msg" class="muted"></p>
+    </div>
+    <div class="card"><h3>Your agents</h3><button class="secondary" onclick="loadAgents()">Refresh</button><div id="agents-list"></div></div>
+    <div class="notice"><strong>Policy:</strong> $99/mo + $112/agent/mo. Deactivate keeps the agent listed as Inactive with a prorated breakdown ($112 ÷ days in month × days active); reactivate restores the seat; remove drops the seat.</div>
+  </section>
+
+  <!-- SUPERVISOR -->
+  <section class="page" id="page-supervisor">
+    <h2>Supervisor Wallboard</h2>
+    <div class="demo-note">Sample data only.</div>
+    <table><tr><th>Agent</th><th>Status</th><th>Listen</th><th>Whisper</th><th>Barge</th></tr>
+    <tr><td>Sample Agent 1</td><td>On call</td><td><button class="secondary">Listen</button></td><td><button class="secondary">Whisper</button></td><td><button class="secondary">Barge</button></td></tr>
+    <tr><td>Sample Agent 2</td><td>Available</td><td><button class="secondary">Listen</button></td><td><button class="secondary">Whisper</button></td><td><button class="secondary">Barge</button></td></tr></table>
+  </section>
+
+  <!-- INBOX -->
+  <section class="page" id="page-inbox">
+    <h2>Omnichannel Inbox</h2>
+    <p>Voice, SMS, chat, and email in one queue (sample conversations).</p>
+    <div class="card"><p><strong>Sample SMS:</strong> "Hi, I'd like a quote." — <button class="secondary">Reply</button></p>
+    <p><strong>Sample chat:</strong> "Are you open today?" — <button class="secondary">Reply</button></p></div>
+  </section>
+
+  <!-- IVR -->
+  <section class="page" id="page-ivr">
+    <h2>IVR &amp; Queues</h2>
+    <div class="card"><p>Sample IVR: "Press 1 for sales, 2 for support." Queues: Sales (2 waiting, sample), Support (0 waiting, sample).</p></div>
+  </section>
+
+  <!-- CRM -->
+  <section class="page" id="page-crm">
+    <h2>CRM Integrations + Screen-Pop</h2>
+    <div class="card"><p>When a call arrives, the matching CRM record pops on screen with the caller info (sample). Integrations are configured per business in settings.</p></div>
+  </section>
+
+  <!-- WORKFORCE -->
+  <section class="page" id="page-workforce">
+    <h2>Workforce</h2>
+    <div class="card"><p>Sample schedules, adherence, and forecasting (sample data). Per-agent work time is tracked for reporting only.</p></div>
+  </section>
+
+  <!-- ANALYTICS -->
+  <section class="page" id="page-analytics">
+    <h2>Analytics</h2>
+    <div class="card"><p>Sample: answer rate 90%, average handle time 4m 12s, CSAT 4.7/5 (sample data).</p></div>
+  </section>
+
+  <!-- SCRIPTS -->
+  <section class="page" id="page-scripts">
+    <h2>Scripts</h2>
+    <div class="card"><p>Sample opening script: "Hello, this is [business]. How can I help today?" Agents follow branching scripts on screen.</p></div>
+  </section>
+
+  <!-- INTERACTIONS -->
+  <section class="page" id="page-interactions">
+    <h2>Interactions</h2>
+    <div class="card"><p>Every interaction — call, text, chat, email — lands here with its transcript and outcome (sample rows).</p></div>
+  </section>
+
+  <!-- RECORDINGS -->
+  <section class="page" id="page-recordings">
+    <h2>Recordings &amp; Quality</h2>
+    <div class="card"><p>Sample recordings with quality scores (sample data). Scoring is coaching-only, never a billing input.</p></div>
+  </section>
+
+  <!-- CAMPAIGNS -->
+  <section class="page" id="page-campaigns">
+    <h2>Campaigns</h2>
+    <div class="card"><p>Sample campaign: "Spring outreach" — 1,000 leads, 212 contacted (sample). Campaigns run through the Live Dialer.</p></div>
+  </section>
+
+  <!-- GENAI -->
+  <section class="page" id="page-genai">
+    <h2>GenAI Studio</h2>
+    <div class="card"><p>Build AI voice and message flows here (sample flow). AI replies use an OpenAI-compatible provider; when no key is set, scripted fallback replies are used.</p></div>
+  </section>
+
+  <!-- GENIUS -->
+  <section class="page" id="page-genius">
+    <h2>Genius Routing</h2>
+    <div class="card"><p>Sample routing: high-intent callers route to your best closer first; everyone else joins the next-available queue (sample rules).</p></div>
+  </section>
+
+  <!-- VOICE DEMO -->
+  <section class="page" id="page-voice">
+    <h2>Vox AI Voice Demo</h2>
+    <div class="card"><p>Sample voice greeting (demo only): "Hello! Thanks for calling. How can I help you today?" No live call is placed.</p>
+    <button class="cta" onclick="alert('Demo only — no live audio call is placed from this build.')">Play sample greeting</button></div>
+  </section>
+
+  <!-- OWNER CONSOLE -->
+  <section class="page" id="page-owner">
+    <h2>Owner Console</h2>
+    <div class="card"><h3>Owner login</h3>
+      <label>Email <input id="owner-email" placeholder="Owner email"></label>
+      <label>Password <input id="owner-password" type="password"></label>
+      <button class="cta" onclick="ownerLogin()">Log in as owner</button>
+      <p id="owner-msg" class="muted"></p>
+    </div>
+    <div class="card"><h3>Summary</h3><button class="secondary" onclick="ownerSummary()">Refresh</button><div id="owner-summary"></div></div>
+    <div class="card"><h3>Orders (owner release)</h3><button class="secondary" onclick="ownerOrders()">Refresh</button><div id="owner-orders"></div></div>
+    <div class="card"><h3>Customers</h3><button class="secondary" onclick="ownerCustomers()">Refresh</button><div id="owner-customers"></div></div>
+  </section>
+</main>
+
+<div id="call-popup">
+  <h3>Incoming call (demo)</h3>
+  <p id="popup-caller">Sample Caller</p>
+  <p class="muted" id="popup-notes">Demo pop-up only — no live call is connected.</p>
+  <p class="timer" id="popup-timer">00:00</p>
+  <button class="cta" onclick="answerCall()">Answer</button>
+  <button class="secondary" onclick="endCall()">End</button>
+</div>
+
+<footer>
+  <span class="wordmark"><span class="r">Vox</span><span class="g">The</span><span class="r">Box</span><span class="g">Calling</span><span class="r">Pilot</span></span> — Smarter conversations. Greater results.<br>
+  Demo build: sample data only. HIPAA / SOC 2 / SLA are roadmap items, not claims.
+</footer>
+<script src="/app.js"></script>
+</body>
+</html>
